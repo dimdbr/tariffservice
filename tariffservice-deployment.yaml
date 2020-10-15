@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: tariffservice
+  name: tariffservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: tariffservice
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: tariffservice
+    spec:
+      containers:
+      - env:
+        - name: DB_SCHEMA
+          value: '"tariff_schema"'
+        - name: DB_SERVER
+          value: '"postgres-parking"'
+        - name: POSTGRES_DB
+          value: '"Parking"'
+        - name: POSTGRES_PASSWORD
+          value: '"test"'
+        - name: POSTGRES_USER
+          value: '"test"'
+        image: dimdbr/parking-tariffservice
+        imagePullPolicy: ""
+        name: parking-tariffservice
+        ports:
+        - containerPort: 8082
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
