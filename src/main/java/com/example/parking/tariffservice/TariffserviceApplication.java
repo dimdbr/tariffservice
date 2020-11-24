@@ -23,6 +23,7 @@ public class TariffserviceApplication {
     public static void main(String[] args) {
         SpringApplication.run(TariffserviceApplication.class, args);
     }
+    /*
     @Bean
     public DataSource dataSource() {
 
@@ -51,4 +52,6 @@ public class TariffserviceApplication {
         dataSource.addDataSourceProperty("password", "test");
         return dataSource;
     }
+    */
+
 }
